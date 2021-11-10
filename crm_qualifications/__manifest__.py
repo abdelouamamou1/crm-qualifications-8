@@ -13,11 +13,12 @@
     'author': "ABDELILAH OUAMAMOU",
     'website': "",
     'category': 'CRM',
-    'version': '12.0.1.0',
+    'version': '12.0.2.0',
 
     'depends': ['crm','mail','base'],
 
-    'data': [],
+    'data': [
+        'views/res_partner_views_inherit.xml'],
     
     'installable':True,
     'application':False
