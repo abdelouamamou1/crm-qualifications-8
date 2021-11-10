@@ -7,6 +7,7 @@ from odoo.exceptions import UserError
 class CrmLeadInherit(models.Model):
     _inherit = 'crm.lead'
 
+    reminder_date = fields.Date(string='Reminder date') #next action date
      
     ## Overide onchange partner function for get contact,partner and title of customer automatically    ##
     def _onchange_partner_id_values(self, partner_id):

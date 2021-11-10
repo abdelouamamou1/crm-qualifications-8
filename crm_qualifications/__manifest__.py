@@ -15,12 +15,17 @@
     'category': 'CRM',
     'version': '12.0.2.0',
 
-    'depends': ['crm','mail','base'],
+    'depends': ['crm', 'mail', 'base'],
 
     'data': [
-        'views/res_partner_views_inherit.xml'],
-    
-    'installable':True,
-    'application':False
+        'security/ir.model.access.csv',
+        'views/crm_lead_views_inherit.xml',
+        'views/res_partner_views_inherit.xml',
+        'wizard/lead_define_date_wizard_view.xml',
+        'wizard/crm_lead_wizard_view.xml',
+        'views/crm_menuitems.xml'],
+
+    'installable': True,
+    'application': False
 
 }
