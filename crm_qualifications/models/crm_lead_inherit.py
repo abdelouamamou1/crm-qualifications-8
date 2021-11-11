@@ -1,39 +1,24 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
-from odoo.exceptions import UserError
 
 
 class CrmLeadInherit(models.Model):
     _inherit = 'crm.lead'
 
-    reminder_date = fields.Date(string='Reminder date') #next action date
-     
-    ## Overide onchange partner function for get contact,partner and title of customer automatically    ##
-    def _onchange_partner_id_values(self, partner_id):
-        if partner_id:
-            partner = self.env['res.partner'].browse(partner_id)
-            partner_name = partner.parent_id.name
-            if not partner_name and partner.is_company:
-                partner_name = partner.name
-            
-            contact_name = partner.child_ids[0]['name'] if partner.is_company else partner.name
-            title = partner.child_ids[0].title.id if partner.is_company else partner.title.id
+    reminder_date = fields.Date(string='Reminder date')  # next action date
 
-            return {
-                'partner_name': partner_name,
-                'contact_name': contact_name ,#partner.name if not partner.is_company else False,
-                'title': title, #partner.title.id,
-                'street': partner.street,
-                'street2': partner.street2,
-                'city': partner.city,
-                'state_id': partner.state_id.id,
-                'country_id': partner.country_id.id,
-                'email_from': partner.email,
-                'phone': partner.phone,
-                'mobile': partner.mobile,
-                'zip': partner.zip,
-                'function': partner.function,
-                'website': partner.website,
-            }
-        return {}
+   # create onchange partner name function that check if customer already exist
+    @api.onchange('partner_name')
+    def onchange_partner_name(self):
+        partner_obj = self.env['res.partner']
+        if self.partner_name:
+            partner_id = partner_obj.search(
+                [('name', 'ilike', self.partner_name)], limit=1)
+
+            if partner_id:
+                child_id = partner_obj.search(
+                    [('parent_id', '=', partner_id.id)], limit=1)
+                if child_id:
+                    self.update({'contact_name': child_id.name,
+                                 'title': child_id.title.id if child_id.title.id else False})
