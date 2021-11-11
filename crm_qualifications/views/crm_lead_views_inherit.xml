@@ -8,7 +8,12 @@
             <xpath expr="//notebook" position="inside">
                 <page string="Reminder">
                     <group>
-                        <field name="reminder_date"/>
+                        <group>
+                            <field name="reminder_date"/>
+                        </group>
+                        <group>
+                            <button string="Schedule action" name="schedule_next_action" type="object" class="btn-primary"/>
+                        </group>
                     </group>
                 </page>
             </xpath>

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api,_
 
 
 class CrmLeadInherit(models.Model):
@@ -22,3 +22,18 @@ class CrmLeadInherit(models.Model):
                 if child_id:
                     self.update({'contact_name': child_id.name,
                                  'title': child_id.title.id if child_id.title.id else False})
+                    
+    
+    # schedule next action based on reminder date               
+    def schedule_next_action(self):
+             return {
+                'name': _('Next action'),
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_model': 'next.action.wizard',
+                'view_id': self.env.ref('crm_qualifications.lead_next_action_form_wizard').id,
+                'type': 'ir.actions.act_window',
+                'context': {'reminder_date':self.reminder_date,
+                            'lead_id':self.id},
+                'target': 'new'
+            } 

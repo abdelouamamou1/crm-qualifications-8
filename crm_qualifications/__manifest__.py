@@ -13,7 +13,7 @@
     'author': "ABDELILAH OUAMAMOU",
     'website': "",
     'category': 'CRM',
-    'version': '12.0.2.0',
+    'version': '12.0.3.1',
 
     'depends': ['crm', 'mail', 'base'],
 
@@ -23,6 +23,7 @@
         'views/res_partner_views_inherit.xml',
         'wizard/lead_define_date_wizard_view.xml',
         'wizard/crm_lead_wizard_view.xml',
+        'wizard/lead_next_action_wizard_view.xml',
         'views/crm_menuitems.xml'],
 
     'installable': True,
