@@ -13,7 +13,7 @@
     'author': "ABDELILAH OUAMAMOU",
     'website': "",
     'category': 'CRM',
-    'version': '12.0.3.1',
+    'version': '12.0.4.2',
 
     'depends': ['crm', 'mail', 'base'],
 
@@ -24,7 +24,10 @@
         'wizard/lead_define_date_wizard_view.xml',
         'wizard/crm_lead_wizard_view.xml',
         'wizard/lead_next_action_wizard_view.xml',
-        'views/crm_menuitems.xml'],
+        'views/crm_menuitems.xml',
+        'report/overdue_action_template.xml',
+        'report/overdue_actions_report.xml',
+        ],
 
     'installable': True,
     'application': False

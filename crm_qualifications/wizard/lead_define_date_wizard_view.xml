@@ -8,11 +8,11 @@
                 <group>
                     <field name="date" style="width:50%%;"/>
                 </group>
+                <footer>
+                    <button string="Define date" name="define_next_date" type="object" class="btn-primary"/>
+                    <button string="Discard" class="btn-secondary" special="cancel"/>
+                </footer>
             </form>
-            <footer>
-                <button string="Define date" name="define_next_date" type="object" class="btn-primary"/>
-                <button string="Discard" class="btn-secondary" special="cancel"/>
-            </footer>
         </field>
     </record>
 </odoo>

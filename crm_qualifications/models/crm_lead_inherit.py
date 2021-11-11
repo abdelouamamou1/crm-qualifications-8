@@ -37,3 +37,10 @@ class CrmLeadInherit(models.Model):
                             'lead_id':self.id},
                 'target': 'new'
             } 
+
+
+    #call qweb report template in order to print  overdue actions 
+    @api.multi
+    def overdue_actions_print(self):
+        
+        return self.env.ref('crm_qualifications.report_overdue_actions').report_action(self)

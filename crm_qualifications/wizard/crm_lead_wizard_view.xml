@@ -22,7 +22,7 @@
                     </group>
                 </group>
 
-                 <group>
+                <group>
                     <group>
                         <field name="email"/>
                     </group>
@@ -39,11 +39,12 @@
                         <field name="team_id" widget="selection"/>
                     </group>
                 </group>
+                <footer>
+                    <button string="Create lead" name="create_new_lead" type="object" class="btn-primary"/>
+                    <button string="Discard" class="btn-secondary" special="cancel"/>
+                </footer>
             </form>
-            <footer>
-                <button string="Create lead" name="create_new_lead" type="object" class="btn-primary"/>
-                <button string="Discard" class="btn-secondary" special="cancel"/>
-            </footer>
+
         </field>
     </record>
 </odoo>
