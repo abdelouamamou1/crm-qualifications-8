@@ -2,4 +2,5 @@
 
 #from . import controllers
 from . import models,\
-              wizard
+              wizard,\
+              controllers

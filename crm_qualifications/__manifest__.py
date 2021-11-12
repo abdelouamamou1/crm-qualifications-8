@@ -3,7 +3,7 @@
     'name': "CRM Qualifications",
 
     'summary': """
-        Qualify leads
+        Qualify leads,
         Link lead to existing customer""",
 
     'description': """
@@ -13,9 +13,9 @@
     'author': "ABDELILAH OUAMAMOU",
     'website': "",
     'category': 'CRM',
-    'version': '12.0.4.2',
+    'version': '12.0.5.3',
 
-    'depends': ['crm', 'mail', 'base'],
+    'depends': ['crm', 'mail', 'base','portal'],
 
     'data': [
         'security/ir.model.access.csv',
@@ -27,6 +27,7 @@
         'views/crm_menuitems.xml',
         'report/overdue_action_template.xml',
         'report/overdue_actions_report.xml',
+        'views/lead_portal_templates.xml'
         ],
 
     'installable': True,

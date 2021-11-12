@@ -44,12 +44,11 @@
                                                         <span t-esc="lead.partner_name"/>
                                                     </td>
                                                     <td name="td_contact">
-                                                        <span t-esc="lead.partner_name"/>
+                                                        <span t-esc="lead.contact_name"/>
                                                     </td>
                                                     <td name="td_phone">
                                                         <span t-esc="lead.phone"/>
                                                     </td>
-
                                                     <td name="td_date">
                                                         <span t-esc="action.date_deadline.strftime('%d/%m/%Y')"/>
                                                     </td>
