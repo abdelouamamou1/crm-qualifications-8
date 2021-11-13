@@ -5,7 +5,6 @@
 
             <t t-call="web.html_container">
 
-                <!-- <t t-foreach="docs" t-as="o"> -->
                 <t t-call="web.external_layout">
 
                     <div class="page">
@@ -38,7 +37,6 @@
                                                 <tr>
                                                     <td name="td_lead">
                                                         <span t-esc="lead.name"/>
-                                                        <!-- <span t-esc="len(lead.activity_ids)"/> -->
                                                     </td>
                                                     <td name="td_partner">
                                                         <span t-esc="lead.partner_name"/>

@@ -8,7 +8,7 @@ class CrmLeadInherit(models.Model):
 
     reminder_date = fields.Date(string='Reminder date')  # next action date
 
-   # create onchange partner name function that check if customer already exist
+   # create onchange partner name function that check if customer already exist and fill contact title automatically
     @api.onchange('partner_name')
     def onchange_partner_name(self):
         partner_obj = self.env['res.partner']

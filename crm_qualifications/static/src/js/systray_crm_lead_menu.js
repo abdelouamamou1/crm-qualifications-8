@@ -2,7 +2,6 @@ odoo.define('crm_qualifications.leadsMenu', function (require) {
     "use strict";
     
     var core = require('web.core');
-    var session = require('web.session');
     var SystrayMenu = require('web.SystrayMenu');
     var Widget = require('web.Widget');
     var QWeb = core.qweb;
@@ -33,7 +32,6 @@ odoo.define('crm_qualifications.leadsMenu', function (require) {
                 model: 'res.users',
                 method: 'systray_get_user_leads',
                 args: [],
-                // kwargs: {context: session.user_context},
             }).then(function (data) {
            
                 self._leads = data;

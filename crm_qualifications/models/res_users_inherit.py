@@ -4,7 +4,7 @@ from odoo import models, fields, api, modules
 class ResUsersInherit(models.Model):
     _inherit = 'res.users'
     
-    
+    #add systray get user leads to add user leads using SQL query 
     @api.model
     def systray_get_user_leads(self):
         

@@ -5,7 +5,7 @@ from odoo.http import request
 from odoo.addons.portal.controllers.portal import CustomerPortal, pager as portal_pager
 import datetime
 
-
+#inherit from customer portal controller in order to add leads in menu
 class CustomerPortalInherit(CustomerPortal):
 
     def _prepare_portal_layout_values(self):
@@ -13,12 +13,13 @@ class CustomerPortalInherit(CustomerPortal):
         values = super(CustomerPortalInherit,
                        self)._prepare_portal_layout_values()
         # get overdue actions
-        action_ids = request.env['mail.activity'].search([('date_deadline', '<', datetime.date.today())])
+        action_ids = request.env['mail.activity'].search(
+            [('date_deadline', '<', datetime.date.today())])
         res_ids = [action.res_id for action in action_ids]
         # get count of leads that have overdue actions
         domain = [('type', '=', 'lead'), ('id', 'in', res_ids)]
         values['lead_count'] = request.env['crm.lead'].search_count(domain)
-        
+
         return values
 
     def _lead_get_page_view_values(self, lead, access_token, **kwargs):
@@ -26,19 +27,22 @@ class CustomerPortalInherit(CustomerPortal):
             'page_name': 'lead',
             'lead': lead,
         }
-        
+
         return self._get_page_view_values(lead, access_token, values, 'my_leads_history', False, **kwargs)
 
+    # Add route to access to leads list
     @http.route(['/my/leads', '/my/leads/page/<int:page>'], type='http', auth="user", website=True)
     def portal_my_leads(self, page=1, sortby=None, **kw):
 
         values = self._prepare_portal_layout_values()
         CrmLead = request.env['crm.lead']
         # get overdue actions
-        action_ids = request.env['mail.activity'].search([('date_deadline', '<', datetime.date.today())])
+        action_ids = request.env['mail.activity'].search(
+            [('date_deadline', '<', datetime.date.today())])
         res_ids = [action.res_id for action in action_ids]
         domain = [('type', '=', 'lead'), ('id', 'in', res_ids)]
 
+        # searchbar sorting
         searchbar_sortings = {
             'date': {'label': _('Newest'), 'order': 'create_date desc'},
             'name': {'label': _('Name'), 'order': 'name'},
@@ -66,7 +70,6 @@ class CustomerPortalInherit(CustomerPortal):
         request.session['my_leads_history'] = leads.ids[:100]
 
         values.update({
-
             'leads': leads,
             'page_name': 'lead',
             'archive_groups': archive_groups,
@@ -75,5 +78,5 @@ class CustomerPortalInherit(CustomerPortal):
             'searchbar_sortings': searchbar_sortings,
             'sortby': sortby
         })
-        
+
         return request.render("crm_qualifications.portal_my_leads", values)
