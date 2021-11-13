@@ -13,9 +13,9 @@
     'author': "ABDELILAH OUAMAMOU",
     'website': "",
     'category': 'CRM',
-    'version': '12.0.5.3',
+    'version': '12.0.6.3',
 
-    'depends': ['crm', 'mail', 'base','portal'],
+    'depends': ['crm', 'mail', 'base', 'portal'],
 
     'data': [
         'security/ir.model.access.csv',
@@ -27,8 +27,11 @@
         'views/crm_menuitems.xml',
         'report/overdue_action_template.xml',
         'report/overdue_actions_report.xml',
-        'views/lead_portal_templates.xml'
-        ],
+        'views/lead_portal_templates.xml',
+        'views/assets_backend_inherit.xml'
+    ],
+
+    'qweb': ['static/src/xml/systray_lead.xml'],
 
     'installable': True,
     'application': False
