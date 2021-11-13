@@ -13,7 +13,7 @@
     'author': "ABDELILAH OUAMAMOU",
     'website': "",
     'category': 'CRM',
-    'version': '12.0.6.3',
+    'version': '12.0.7.4',
 
     'depends': ['crm', 'mail', 'base', 'portal'],
 

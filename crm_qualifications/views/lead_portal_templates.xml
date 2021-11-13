@@ -50,7 +50,7 @@
                             </a>
                         </td>
                         <td class="text-right">
-                            <t t-esc="lead.reminder_date"/>
+                            <span t-field="lead.reminder_date" t-options="{'widget': 'date'}"/>
                         </td>
                     </tr>
                 </tbody>

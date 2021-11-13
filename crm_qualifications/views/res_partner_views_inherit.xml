@@ -11,7 +11,7 @@
                         <field name="lead_ids">
                             <tree>
                                 <field name="create_date"/>
-                                <field name="name" string="Piste"/>
+                                <field name="name" string="Lead"/>
                                 <field name="user_id"/>
                                 <field name="team_id"/>
                             </tree>
